@@ -1,0 +1,3247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indigenius Software Companies - Complete Directory</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --primary: #00acc1;
+            --secondary: #6a1b9a;
+            --accent: #fdbb2d;
+            --light: #f8f9fa;
+            --dark: #343a40;
+            --darker: #1e2124;
+            --success: #28a745;
+            --info: #17a2b8;
+            --warning: #ffc107;
+            --danger: #dc3545;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            
+            /* Gradient colors */
+            --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-2: linear-gradient(135deg, #2196F3 0%, #21CBF3 100%);
+            --gradient-3: linear-gradient(135deg, #00c6ff 0%, #0072ff 100%);
+            --gradient-4: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            --gradient-5: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+            --gradient-6: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+            
+            /* Zoho brand colors */
+            --zoho-red: #e74c3c;
+            --zoho-blue: #3498db;
+            --zoho-green: #2ecc71;
+            --zoho-purple: #9b59b6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: #000;
+            min-height: 100vh;
+            color: var(--dark);
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Particle Effect */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        /* Rainbow Gradient Background */
+        .rainbow-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            background: linear-gradient(45deg, 
+                #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #9400d3, #ff0000
+            );
+            background-size: 400% 400%;
+            animation: rainbowMove 15s ease infinite;
+        }
+
+        @keyframes rainbowMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Enhanced Loading Screen */
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-1);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+            overflow: hidden;
+        }
+
+        .loading-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: pulseBg 4s ease-in-out infinite;
+        }
+
+        @keyframes pulseBg {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.2); opacity: 0.8; }
+        }
+
+        .loading-container {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            max-width: 600px;
+            padding: 0 20px;
+        }
+
+        .loading-logo {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 30px;
+            position: relative;
+        }
+
+        .loading-logo-circle {
+            width: 100%;
+            height: 100%;
+            border: 4px solid rgba(255, 255, 255, 0.2);
+            border-top-color: white;
+            border-radius: 50%;
+            animation: spin 1.5s linear infinite;
+        }
+
+        .loading-logo-inner {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            height: 80%;
+            border: 3px solid rgba(255, 255, 255, 0.2);
+            border-right-color: var(--accent);
+            border-radius: 50%;
+            animation: spin 1s linear infinite reverse;
+        }
+
+        .loading-logo-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 40px;
+            color: white;
+            animation: pulseIcon 2s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes pulseIcon {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); }
+            50% { transform: translate(-50%, -50%) scale(1.1); }
+        }
+
+        .loading-text {
+            color: white;
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .loading-subtext {
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 30px;
+            font-size: 18px;
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .loading-steps {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+            animation: fadeInUp 1s ease-out 0.4s both;
+        }
+
+        .loading-step {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            margin: 0 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-weight: bold;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .loading-step.active {
+            background: white;
+            color: var(--primary);
+            transform: scale(1.1);
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+        }
+
+        .loading-step.completed {
+            background: var(--success);
+            color: white;
+        }
+
+        .loading-step.completed::after {
+            content: '\f00c';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+        }
+
+        .loading-progress-container {
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto 30px;
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+
+        .loading-progress {
+            width: 100%;
+            height: 10px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 5px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .loading-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent), var(--warning));
+            border-radius: 5px;
+            width: 0%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .loading-bar::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            animation: shimmer 1.5s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .loading-percentage {
+            margin-top: 10px;
+            color: white;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .loading-particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .loading-particle {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: white;
+            border-radius: 50%;
+            opacity: 0.6;
+        }
+
+        .loading-interactive {
+            margin-top: 30px;
+            animation: fadeInUp 1s ease-out 0.8s both;
+        }
+
+        .loading-tip {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 20px;
+            color: white;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .loading-tip:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px);
+        }
+
+        .loading-tip i {
+            margin-right: 10px;
+            color: var(--accent);
+        }
+
+        .loading-sound-toggle {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 30px;
+            padding: 8px 15px;
+            color: white;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .loading-sound-toggle:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .loading-sound-toggle i {
+            margin-right: 8px;
+        }
+
+        /* Main Content */
+        .main-content {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+            position: relative;
+            z-index: 1;
+        }
+
+        .main-content.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Header */
+        header {
+            background: var(--gradient-1);
+            backdrop-filter: blur(10px);
+            box-shadow: var(--shadow-xl);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-2);
+            border-radius: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover .logo-icon {
+            transform: rotate(10deg) scale(1.05);
+        }
+
+        .logo-text h1 {
+            font-size: 24px;
+            color: white;
+            font-weight: 700;
+        }
+
+        .logo-text p {
+            font-size: 14px;
+            color: #ccc;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #ccc;
+            font-weight: 600;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        nav a:hover {
+            color: white;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 80px 20px;
+            text-align: center;
+            color: white;
+            position: relative;
+            background: var(--gradient-3);
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero p {
+            font-size: 20px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+
+        .search-container {
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 18px 60px 18px 25px;
+            border-radius: 50px;
+            border: none;
+            font-size: 16px;
+            box-shadow: var(--shadow-xl);
+            outline: none;
+            background: rgba(255, 255, 255, 0.9);
+            transition: box-shadow 0.3s ease;
+        }
+
+        .search-input:focus {
+            box-shadow: 0 0 0 3px rgba(253, 187, 45, 0.5);
+        }
+
+        .search-btn {
+            position: absolute;
+            right: 5px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--secondary);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            color: white;
+            font-size: 18px;
+            transition: all 0.3s ease;
+        }
+
+        .search-btn:hover {
+            background: var(--primary);
+            transform: translateY(-50%) scale(1.05);
+        }
+
+        /* Enhanced Stats Section */
+        .stats {
+            padding: 50px 20px;
+            background: var(--gradient-4);
+            backdrop-filter: blur(10px);
+        }
+
+        .stats-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: var(--shadow-lg);
+            text-align: center;
+            transition: all 0.3s ease;
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(255,255,255,0.1), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.6s;
+        }
+
+        .stat-card:hover::before {
+            transform: translateX(100%);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-xl);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .stat-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--gradient-6);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto 20px;
+            color: white;
+            font-size: 30px;
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover .stat-icon {
+            transform: scale(1.1) rotate(10deg);
+        }
+
+        .stat-number {
+            font-size: 36px;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .stat-details {
+            margin-top: 15px;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.4;
+        }
+
+        /* Stock Section */
+        .stock-section {
+            padding: 80px 20px;
+            background: var(--gradient-2);
+            backdrop-filter: blur(10px);
+        }
+
+        .stock-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .stock-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .stock-title {
+            font-size: 36px;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 15px;
+        }
+
+        .stock-subtitle {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .stock-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .stock-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            box-shadow: var(--shadow-lg);
+            padding: 20px;
+            transition: all 0.3s ease;
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+        }
+
+        .stock-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--gradient-6);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+
+        .stock-card:hover::after {
+            transform: scaleX(1);
+        }
+
+        .stock-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-xl);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .stock-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .stock-company-name {
+            font-size: 20px;
+            font-weight: 700;
+            color: white;
+        }
+
+        .stock-price {
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .stock-positive {
+            color: #4ade80;
+        }
+
+        .stock-negative {
+            color: #f87171;
+        }
+
+        .stock-chart-container {
+            height: 200px;
+            margin-bottom: 15px;
+        }
+
+        .stock-info {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* Industry Graphs Section */
+        .industry-graphs {
+            padding: 80px 20px;
+            background: var(--gradient-5);
+            backdrop-filter: blur(10px);
+        }
+
+        .graphs-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+        }
+
+        .graph-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            box-shadow: var(--shadow-lg);
+            padding: 25px;
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .graph-card h3 {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .graph-container {
+            height: 300px;
+            position: relative;
+        }
+
+        /* Zoho Spotlight Section */
+        .zoho-spotlight {
+            padding: 80px 20px;
+            background: var(--gradient-6);
+            backdrop-filter: blur(10px);
+            position: relative;
+        }
+
+        .zoho-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .zoho-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .zoho-title {
+            font-size: 42px;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 15px;
+        }
+
+        .zoho-subtitle {
+            font-size: 20px;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .zoho-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .zoho-info {
+            color: white;
+        }
+
+        .zoho-description {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .zoho-achievements {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .achievement-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .achievement-number {
+            font-size: 36px;
+            font-weight: 800;
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+
+        .achievement-label {
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .zoho-products {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+        }
+
+        .zoho-products h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+        }
+
+        .product-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .product-item:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .product-icon {
+            font-size: 30px;
+            margin-bottom: 10px;
+            color: var(--accent);
+        }
+
+        .product-name {
+            font-weight: 600;
+            color: white;
+            margin-bottom: 5px;
+        }
+
+        .product-desc {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .zoho-image {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow-xl);
+        }
+
+        .zoho-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .zoho-image-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0,0,0,0.3), transparent);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .zoho-quote {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 15px;
+            max-width: 80%;
+            text-align: center;
+        }
+
+        .quote-text {
+            font-size: 18px;
+            font-style: italic;
+            color: var(--dark);
+            margin-bottom: 15px;
+        }
+
+        .quote-author {
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        /* Companies Section */
+        .companies {
+            padding: 80px 20px;
+            background: var(--gradient-1);
+            backdrop-filter: blur(10px);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title {
+            font-size: 36px;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 15px;
+        }
+
+        .section-subtitle {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .filters {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+
+        .filter-btn {
+            padding: 10px 20px;
+            border: 2px solid white;
+            background: transparent;
+            color: white;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn.active,
+        .filter-btn:hover {
+            background: white;
+            color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .companies-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .company-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-xl);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+        }
+
+        .company-card.zoho-card {
+            border: 2px solid var(--zoho-red);
+        }
+
+        .company-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at top right, rgba(253, 187, 45, 0.2), transparent 70%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .company-card:hover::before {
+            opacity: 1;
+        }
+
+        .company-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .company-header {
+            background: var(--gradient-2);
+            padding: 25px;
+            color: white;
+            position: relative;
+        }
+
+        .company-card.zoho-card .company-header {
+            background: var(--zoho-red);
+        }
+
+        .company-logo {
+            width: 80px;
+            height: 80px;
+            background: white;
+            border-radius: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 32px;
+            font-weight: bold;
+            color: var(--primary);
+            margin-bottom: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .company-card.zoho-card .company-logo {
+            background: white;
+            color: var(--zoho-red);
+        }
+
+        .company-card:hover .company-logo {
+            transform: scale(1.05) rotate(5deg);
+        }
+
+        .company-name {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .company-tagline {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .company-body {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .company-info {
+            margin-bottom: 20px;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .info-icon {
+            width: 20px;
+            color: var(--accent);
+            margin-right: 10px;
+        }
+
+        .company-media {
+            margin-bottom: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .company-image {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .company-card:hover .company-image {
+            transform: scale(1.05);
+        }
+
+        .company-video {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-top: 15px;
+        }
+
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .company-media:hover .video-overlay {
+            opacity: 1;
+        }
+
+        .play-button {
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--secondary);
+            font-size: 24px;
+            transition: transform 0.3s ease;
+        }
+
+        .company-media:hover .play-button {
+            transform: scale(1.1);
+        }
+
+        .company-rating {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .rating-stars {
+            color: var(--warning);
+            margin-right: 10px;
+        }
+
+        .rating-value {
+            font-weight: 600;
+            color: white;
+        }
+
+        .company-description {
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.6;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .company-additional {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .additional-title {
+            font-weight: 700;
+            color: white;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        .additional-list {
+            list-style: none;
+        }
+
+        .additional-list li {
+            margin-bottom: 8px;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .additional-list li:before {
+            content: "•";
+            color: var(--accent);
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        /* Key People Section */
+        .key-people-section {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .key-people-title {
+            font-weight: 700;
+            color: white;
+            margin-bottom: 15px;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+        }
+
+        .key-people-title i {
+            margin-right: 8px;
+            color: var(--accent);
+        }
+
+        .key-people-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .key-person {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .key-person:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-5px);
+        }
+
+        .key-person-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--gradient-6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto 10px;
+            font-size: 24px;
+            color: white;
+            font-weight: bold;
+        }
+
+        .key-person-name {
+            font-weight: 700;
+            color: white;
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+
+        .key-person-role {
+            color: var(--accent);
+            font-size: 12px;
+            margin-bottom: 8px;
+        }
+
+        .key-person-domain {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 5px;
+        }
+
+        .key-person-replacing {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.7);
+            font-style: italic;
+        }
+
+        .company-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .company-size {
+            display: inline-block;
+            padding: 5px 12px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            color: white;
+        }
+
+        .visit-btn {
+            display: inline-block;
+            background: var(--gradient-6);
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .visit-btn:hover {
+            transform: translateY(-3px);
+            color: white;
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Video Modal */
+        .video-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .video-modal-content {
+            position: relative;
+            width: 80%;
+            max-width: 800px;
+        }
+
+        .video-modal iframe {
+            width: 100%;
+            height: 450px;
+            border: none;
+            border-radius: 10px;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            color: white;
+            font-size: 30px;
+            transition: transform 0.3s ease;
+        }
+
+        .close-modal:hover {
+            transform: scale(1.2);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--gradient-1);
+            backdrop-filter: blur(10px);
+            padding: 50px 20px 30px;
+            margin-top: 80px;
+            color: #ccc;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+
+        .footer-column h3 {
+            font-size: 20px;
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column li {
+            margin-bottom: 12px;
+        }
+
+        .footer-column a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-column a:hover {
+            color: var(--accent);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: rgba(255, 255, 255, 0.8);
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: var(--gradient-6);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 14px;
+        }
+
+        /* Floating Action Button */
+        .fab {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: var(--zoho-red);
+            border-radius: 50%;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 24px;
+            box-shadow: var(--shadow-xl);
+            z-index: 100;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .fab:hover {
+            transform: scale(1.1);
+            background: var(--accent);
+        }
+
+        /* Notification Toast */
+        .toast {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 10px;
+            box-shadow: var(--shadow-xl);
+            transform: translateX(400px);
+            transition: transform 0.3s ease;
+            z-index: 1000;
+            max-width: 300px;
+        }
+
+        .toast.show {
+            transform: translateX(0);
+        }
+
+        .toast-title {
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .toast-message {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .companies-grid {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
+            
+            .stock-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+            
+            .graphs-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .key-people-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            }
+            
+            .zoho-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            nav ul {
+                gap: 15px;
+            }
+            
+            .hero h1 {
+                font-size: 28px;
+            }
+            
+            .hero p {
+                font-size: 16px;
+            }
+            
+            .companies-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .stock-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .video-modal iframe {
+                height: 250px;
+            }
+            
+            .key-people-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .zoho-achievements {
+                grid-template-columns: 1fr;
+            }
+            
+            .products-grid {
+                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            }
+        }
+
+        @media (max-width: 576px) {
+            .logo-text h1 {
+                font-size: 20px;
+            }
+            
+            .logo-text p {
+                font-size: 12px;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .hero {
+                padding: 50px 15px;
+            }
+            
+            .section-title {
+                font-size: 28px;
+            }
+            
+            .stock-title {
+                font-size: 28px;
+            }
+            
+            .zoho-title {
+                font-size: 32px;
+            }
+            
+            .fab {
+                bottom: 20px;
+                right: 20px;
+                width: 50px;
+                height: 50px;
+                font-size: 20px;
+            }
+            
+            .toast {
+                bottom: 80px;
+                right: 20px;
+                max-width: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Particle Effect -->
+    <div class="particles" id="particles"></div>
+
+    <!-- Rainbow Gradient Background -->
+    <div class="rainbow-background"></div>
+
+    <!-- Enhanced Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-bg"></div>
+        <div class="loading-particles" id="loadingParticles"></div>
+        
+        <div class="loading-container">
+            <div class="loading-logo">
+                <div class="loading-logo-circle"></div>
+                <div class="loading-logo-inner"></div>
+                <div class="loading-logo-icon">
+                    <i class="fab fa-bitcoin"></i>
+                </div>
+            </div>
+            
+            <h2 class="loading-text">Loading Indigenius Tech Ecosystem</h2>
+            <p class="loading-subtext" id="loadingSubtext">Initializing components...</p>
+            
+            <div class="loading-steps">
+                <div class="loading-step" id="step1">1</div>
+                <div class="loading-step" id="step2">2</div>
+                <div class="loading-step" id="step3">3</div>
+                <div class="loading-step" id="step4">4</div>
+            </div>
+            
+            <div class="loading-progress-container">
+                <div class="loading-progress">
+                    <div class="loading-bar" id="loadingBar"></div>
+                </div>
+                <div class="loading-percentage" id="loadingPercentage">0%</div>
+            </div>
+            
+            <div class="loading-interactive">
+                <div class="loading-tip" id="loadingTip">
+                    <i class="fas fa-lightbulb"></i>
+                    <span>Did you know? India is the world's largest exporter of IT services.</span>
+                </div>
+                
+                <div class="loading-sound-toggle" id="soundToggle">
+                    <i class="fas fa-volume-mute"></i>
+                    <span>Sound: OFF</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content" id="mainContent">
+        <!-- Header -->
+        <header>
+            <div class="header-container">
+                <div class="logo">
+                    <div class="logo-icon">IS</div>
+                    <div class="logo-text">
+                        <h1>Indigenius Software Companies</h1>
+                        <p>Complete Directory of Indian IT Companies</p>
+                    </div>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#stats">Stats</a></li>
+                        <li><a href="#stocks">Stocks</a></li>
+                        <li><a href="#graphs">Insights</a></li>
+                        <li><a href="#zoho">Zoho</a></li>
+                        <li><a href="#companies">Companies</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="hero" id="home">
+            <h1>Discover India's Software Powerhouses</h1>
+            <p>Explore the most comprehensive directory of Indian software companies, from tech giants to innovative startups</p>
+            <div class="search-container">
+                <input type="text" class="search-input" placeholder="Search companies, technologies, or locations..." id="searchInput">
+                <button class="search-btn"><i class="fas fa-search"></i></button>
+            </div>
+        </section>
+
+        <!-- Enhanced Stats Section -->
+        <section class="stats" id="stats">
+            <div class="stats-container">
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-building"></i></div>
+                    <div class="stat-number" data-target="15000">0</div>
+                    <div class="stat-label">Software Companies</div>
+                    <div class="stat-details">Including 2000+ product companies and 3000+ startups</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-users"></i></div>
+                    <div class="stat-number" data-target="5400000">0</div>
+                    <div class="stat-label">IT Professionals</div>
+                    <div class="stat-details">Growing at 12% annually with 1M new jobs created</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-dollar-sign"></i></div>
+                    <div class="stat-number" data-target="227">0</div>
+                    <div class="stat-label">Industry Revenue ($B)</div>
+                    <div class="stat-details">Contributing 8% to India's GDP with 15% YoY growth</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-rocket"></i></div>
+                    <div class="stat-number" data-target="10000">0</div>
+                    <div class="stat-label">Startups Founded</div>
+                    <div class="stat-details">With $20B+ funding raised in the last 5 years</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-chart-line"></i></div>
+                    <div class="stat-number" data-target="15">0</div>
+                    <div class="stat-label">Industry Growth (%)</div>
+                    <div class="stat-details">Leading global IT services with 58% market share</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-globe"></i></div>
+                    <div class="stat-number" data-target="100">0</div>
+                    <div class="stat-label">Countries Served</div>
+                    <div class="stat-details">With major presence in North America, Europe, and APAC</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stock Section -->
+        <section class="stock-section" id="stocks">
+            <div class="stock-container">
+                <div class="stock-header">
+                    <h2 class="stock-title">Real-Time Stock Performance</h2>
+                    <p class="stock-subtitle">Track the stock performance of top Indian software companies with live updates</p>
+                </div>
+                <div class="stock-grid" id="stockGrid">
+                    <!-- Stock cards will be dynamically loaded here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Industry Graphs Section -->
+        <section class="industry-graphs" id="graphs">
+            <div class="section-header">
+                <h2 class="section-title">Industry Insights & Analytics</h2>
+                <p class="section-subtitle">Comprehensive analysis of the Indian IT industry landscape</p>
+            </div>
+            <div class="graphs-container">
+                <div class="graph-card">
+                    <h3>Revenue Growth by Sector</h3>
+                    <div class="graph-container">
+                        <canvas id="revenueGrowthChart"></canvas>
+                    </div>
+                </div>
+                <div class="graph-card">
+                    <h3>Market Share Distribution</h3>
+                    <div class="graph-container">
+                        <canvas id="marketShareChart"></canvas>
+                    </div>
+                </div>
+                <div class="graph-card">
+                    <h3>Talent Distribution by Technology</h3>
+                    <div class="graph-container">
+                        <canvas id="talentDistributionChart"></canvas>
+                    </div>
+                </div>
+                <div class="graph-card">
+                    <h3>Investment Trends</h3>
+                    <div class="graph-container">
+                        <canvas id="investmentTrendsChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Zoho Spotlight Section -->
+        <section class="zoho-spotlight" id="zoho">
+            <div class="zoho-container">
+                <div class="zoho-header">
+                    <h2 class="zoho-title">Zoho Corporation: The Indian SaaS Pioneer</h2>
+                    <p class="zoho-subtitle">Discover how Zoho is revolutionizing the global software industry with its comprehensive suite of business applications</p>
+                </div>
+                <div class="zoho-content">
+                    <div class="zoho-info">
+                        <p class="zoho-description">
+                            Founded in 1996 by Sridhar Vembu, Zoho has grown from a small startup to a global powerhouse with over 12,000 employees and 80+ million users worldwide. Unlike many Indian IT companies that focus on services, Zoho has built a formidable product portfolio that competes directly with global giants like Microsoft, Google, and Salesforce.
+                        </p>
+                        
+                        <div class="zoho-achievements">
+                            <div class="achievement-item">
+                                <div class="achievement-number">80M+</div>
+                                <div class="achievement-label">Users Worldwide</div>
+                            </div>
+                            <div class="achievement-item">
+                                <div class="achievement-number">50+</div>
+                                <div class="achievement-label">Integrated Apps</div>
+                            </div>
+                            <div class="achievement-item">
+                                <div class="achievement-number">150+</div>
+                                <div class="achievement-label">Countries</div>
+                            </div>
+                            <div class="achievement-item">
+                                <div class="achievement-number">25+</div>
+                                <div class="achievement-label">Years of Innovation</div>
+                            </div>
+                        </div>
+                        
+                        <div class="zoho-products">
+                            <h3>Flagship Products</h3>
+                            <div class="products-grid">
+                                <div class="product-item">
+                                    <div class="product-icon"><i class="fas fa-envelope"></i></div>
+                                    <div class="product-name">Zoho Mail</div>
+                                    <div class="product-desc">Email for business</div>
+                                </div>
+                                <div class="product-item">
+                                    <div class="product-icon"><i class="fas fa-briefcase"></i></div>
+                                    <div class="product-name">Zoho CRM</div>
+                                    <div class="product-desc">Customer management</div>
+                                </div>
+                                <div class="product-item">
+                                    <div class="product-icon"><i class="fas fa-file-alt"></i></div>
+                                    <div class="product-name">Zoho Writer</div>
+                                    <div class="product-desc">Document editor</div>
+                                </div>
+                                <div class="product-item">
+                                    <div class="product-icon"><i class="fas fa-users"></i></div>
+                                    <div class="product-name">Zoho People</div>
+                                    <div class="product-desc">HR management</div>
+                                </div>
+                                <div class="product-item">
+                                    <div class="product-icon"><i class="fas fa-chart-line"></i></div>
+                                    <div class="product-name">Zoho Analytics</div>
+                                    <div class="product-desc">Business intelligence</div>
+                                </div>
+                                <div class="product-item">
+                                    <div class="product-icon"><i class="fas fa-comments"></i></div>
+                                    <div class="product-name">Zoho Desk</div>
+                                    <div class="product-desc">Customer support</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="zoho-image">
+                        <img src="https://www.zoho.com/images/zoho-general-image.jpg" alt="Zoho Corporation">
+                        <div class="zoho-image-overlay">
+                            <div class="zoho-quote">
+                                <p class="quote-text">"We are not in the business of making money. We are in the business of making great products that solve real problems for our customers."</p>
+                                <p class="quote-author">- Sridhar Vembu, CEO & Founder</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Companies Section -->
+        <section class="companies" id="companies">
+            <div class="section-header">
+                <h2 class="section-title">Featured Software Companies</h2>
+                <p class="section-subtitle">Explore India's leading software companies driving innovation globally</p>
+            </div>
+
+            <div class="filters">
+                <button class="filter-btn active" data-filter="all">All Companies</button>
+                <button class="filter-btn" data-filter="enterprise">Enterprise</button>
+                <button class="filter-btn" data-filter="startup">Startup</button>
+                <button class="filter-btn" data-filter="product">Product</button>
+                <button class="filter-btn" data-filter="services">Services</button>
+            </div>
+
+            <div class="companies-grid" id="companiesGrid">
+                <!-- Companies will be dynamically loaded here -->
+            </div>
+        </section>
+
+        <!-- Video Modal -->
+        <div class="video-modal" id="videoModal">
+            <div class="video-modal-content">
+                <span class="close-modal" id="closeModal">&times;</span>
+                <iframe id="videoFrame" src="" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer id="contact">
+            <div class="footer-container">
+                <div class="footer-column">
+                    <h3>Indigenius Software Companies</h3>
+                    <p>Your comprehensive guide to India's vibrant software industry, connecting you with the best companies and opportunities.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#stats">Industry Stats</a></li>
+                        <li><a href="#stocks">Stock Performance</a></li>
+                        <li><a href="#graphs">Market Insights</a></li>
+                        <li><a href="#zoho">Zoho Spotlight</a></li>
+                        <li><a href="#companies">Companies</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Company Categories</h3>
+                    <ul>
+                        <li><a href="#">Enterprise Software</a></li>
+                        <li><a href="#">Cloud Services</a></li>
+                        <li><a href="#">AI & Machine Learning</a></li>
+                        <li><a href="#">Fintech</a></li>
+                        <li><a href="#">Healthcare IT</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Bangalore, India</li>
+                        <li><i class="fas fa-phone"></i> +91 98765 43210</li>
+                        <li><i class="fas fa-envelope"></i> info@indigenius.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Indigenius Software Companies. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+            </div>
+        </footer>
+
+        <!-- Floating Action Button -->
+        <div class="fab" id="fab">
+            <i class="fas fa-arrow-up"></i>
+        </div>
+
+        <!-- Notification Toast -->
+        <div class="toast" id="toast">
+            <div class="toast-title">Notification</div>
+            <div class="toast-message" id="toastMessage">Welcome to Indigenius Software Companies!</div>
+        </div>
+    </div>
+
+    <script>
+        // Enhanced company data with detailed information
+        const companies = [
+            {
+                id: 1,
+                name: "Tata Consultancy Services",
+                tagline: "Building on Belief",
+                logo: "T",
+                founded: 1968,
+                headquarters: "Mumbai, Maharashtra",
+                ceo: "Rajesh Gopinathan",
+                revenue: "$25+ Billion",
+                employees: "600,000+",
+                size: "Large",
+                category: ["enterprise", "services"],
+                description: "TCS is an IT services, consulting and business solutions organization that partners with many of the world's largest businesses in their transformation journeys. With a global network of innovation and delivery centers, TCS offers an integrated portfolio of IT, BPS, infrastructure, engineering, and assurance services.",
+                website: "https://www.tcs.com",
+                stockSymbol: "TCS.NS",
+                shareholders: ["Tata Sons (72.05%)", "Foreign Institutional Investors (15.23%)", "Domestic Institutional Investors (8.45%)", "Retail Investors (4.27%)"],
+                collaborators: ["Microsoft", "Google", "Amazon", "IBM", "Oracle", "SAP", "Salesforce"],
+                futureOutlook: "Expanding AI capabilities, focusing on cloud transformation, and growing in emerging markets. TCS is investing heavily in quantum computing, blockchain, and next-generation cybersecurity solutions.",
+                image: "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                video: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+                rating: 4.7,
+                keyPeople: [
+                    {
+                        name: "Rajesh Gopinathan",
+                        role: "CEO & Managing Director",
+                        initials: "RG",
+                        domain: "IT Services & Consulting",
+                        replacingProduct: "Traditional IT outsourcing models",
+                        background: "Joined TCS in 1996, became CEO in 2017. Led TCS through digital transformation and cloud migration initiatives.",
+                        education: "IIT Delhi, University of Madras",
+                        achievements: "Led TCS to become the first Indian IT company to cross $25 billion revenue"
+                    },
+                    {
+                        name: "N Ganapathy Subramaniam",
+                        role: "Chief Operating Officer",
+                        initials: "NG",
+                        domain: "Operations & Delivery",
+                        replacingProduct: "Legacy operations management systems",
+                        background: "Over 30 years of experience in IT services. Responsible for TCS's global delivery network.",
+                        education: "IIT Madras, IIM Calcutta",
+                        achievements: "Pioneered TCS's agile delivery model and automation initiatives"
+                    },
+                    {
+                        name: "Milind Lakkad",
+                        role: "Chief Human Resources Officer",
+                        initials: "ML",
+                        domain: "Human Resources & Talent Management",
+                        replacingProduct: "Traditional HR management systems",
+                        background: "Joined TCS in 1992. Instrumental in building TCS's talent pipeline and learning ecosystem.",
+                        education: "University of Mumbai, XLRI Jamshedpur",
+                        achievements: "Led TCS's workforce transformation to 50% women employees by 2030"
+                    }
+                ]
+            },
+            {
+                id: 2,
+                name: "Infosys",
+                tagline: "Navigate Your Next",
+                logo: "I",
+                founded: 1981,
+                headquarters: "Bangalore, Karnataka",
+                ceo: "Salil Parekh",
+                revenue: "$18+ Billion",
+                employees: "300,000+",
+                size: "Large",
+                category: ["enterprise", "services"],
+                description: "Infosys is a global leader in next-generation digital services and consulting. The company enables clients in more than 50 countries to create and execute digital transformation strategies. Infosys provides end-to-end business solutions that leverage technology for business transformation.",
+                website: "https://www.infosys.com",
+                stockSymbol: "INFY.NS",
+                shareholders: ["Foreign Institutional Investors (38.2%)", "Promoters (13.97%)", "Mutual Funds (11.45%)", "Insurance Companies (8.23%)"],
+                collaborators: ["AWS", "Microsoft", "SAP", "Salesforce", "Adobe", "Oracle", "IBM"],
+                futureOutlook: "Strengthening digital services, expanding in Europe, and investing in AI and automation. Infosys is focusing on sustainability and ESG initiatives.",
+                image: "https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                video: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+                rating: 4.5,
+                keyPeople: [
+                    {
+                        name: "Salil Parekh",
+                        role: "CEO & Managing Director",
+                        initials: "SP",
+                        domain: "Digital Transformation & Strategy",
+                        replacingProduct: "Legacy IT consulting models",
+                        background: "Joined Infosys in January 2018. Previously worked at Capgemini for 25 years.",
+                        education: "IIT Bombay, Cornell University",
+                        achievements: "Led Infosys's turnaround with focus on large deals and digital transformation"
+                    },
+                    {
+                        name: "Mohit Joshi",
+                        role: "President",
+                        initials: "MJ",
+                        domain: "Financial Services & Healthcare",
+                        replacingProduct: "Traditional banking and healthcare IT systems",
+                        background: "Over 20 years of experience in financial services and healthcare IT.",
+                        education: "IIT Delhi, University of Pennsylvania",
+                        achievements: "Led Infosys's acquisition of Simile and other strategic investments"
+                    },
+                    {
+                        name: "Ravi Kumar",
+                        role: "President & Chief Delivery Officer",
+                        initials: "RK",
+                        domain: "Global Delivery & Operations",
+                        replacingProduct: "Traditional outsourcing models",
+                        background: "Joined Infosys in 2002. Expertise in large-scale transformation programs.",
+                        education: "NIT Trichy, University of Michigan",
+                        achievements: "Led Infosys's zero-distance proximity model and automation initiatives"
+                    }
+                ]
+            },
+            {
+                id: 3,
+                name: "Wipro",
+                tagline: "Spirit of Wipro",
+                logo: "W",
+                founded: 1945,
+                headquarters: "Bangalore, Karnataka",
+                ceo: "Thierry Delaporte",
+                revenue: "$10+ Billion",
+                employees: "250,000+",
+                size: "Large",
+                category: ["enterprise", "services"],
+                description: "Wipro Limited is a leading global information technology, consulting and business process services company that harnesses the power of cognitive computing, hyper-automation, robotics, cloud, analytics and emerging technologies to help clients adapt to the digital world.",
+                website: "https://www.wipro.com",
+                stockSymbol: "WIPRO.NS",
+                shareholders: ["Promoters (73.39%)", "Foreign Institutional Investors (12.45%)", "Mutual Funds (7.23%)", "Retail Investors (6.93%)"],
+                collaborators: ["Apple", "Google", "Microsoft", "SAP", "Cisco", "IBM", "Oracle"],
+                futureOutlook: "Focus on cloud computing, cybersecurity, and engineering services growth. Wipro is investing in AI, data analytics, and next-generation technologies.",
+                image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                video: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+                rating: 4.3,
+                keyPeople: [
+                    {
+                        name: "Thierry Delaporte",
+                        role: "CEO & Managing Director",
+                        initials: "TD",
+                        domain: "Digital Transformation & Strategy",
+                        replacingProduct: "Traditional IT services model",
+                        background: "Joined Wipro in July 2020. Previously worked at Capgemini for 25 years.",
+                        education: "ESSEC Business School, Paris",
+                        achievements: "Led Wipro's transformation with focus on cloud, AI, and cybersecurity"
+                    },
+                    {
+                        name: "Bhanumurthy BM",
+                        role: "Chief Operating Officer",
+                        initials: "BM",
+                        domain: "Operations & Delivery",
+                        replacingProduct: "Legacy operations management",
+                        background: "Joined Wipro in 1994. Expertise in large-scale IT transformation.",
+                        education: "IIT Madras, IIM Bangalore",
+                        achievements: "Led Wipro's automation and AI initiatives across service lines"
+                    },
+                    {
+                        name: "Anis Chenchah",
+                        role: "CEO, APAC & Middle East",
+                        initials: "AC",
+                        domain: "Asia Pacific & Middle East Markets",
+                        replacingProduct: "Regional IT service providers",
+                        background: "Over 20 years of experience in IT services across APAC region.",
+                        education: "University of Madras, INSEAD",
+                        achievements: "Expanded Wipro's footprint in Southeast Asia and Middle East markets"
+                    }
+                ]
+            },
+            {
+                id: 4,
+                name: "HCLTech",
+                tagline: "Supercharging Progress",
+                logo: "H",
+                founded: 1976,
+                headquarters: "Noida, Uttar Pradesh",
+                ceo: "C Vijayakumar",
+                revenue: "$12+ Billion",
+                employees: "210,000+",
+                size: "Large",
+                category: ["enterprise", "services"],
+                description: "HCLTech is a global technology company, spread across 60 countries, delivering industry-leading capabilities centered around digital, engineering and cloud. The company offers a portfolio of technology products, services and solutions spanning IT and business process services, engineering and R&D services, and products and platforms.",
+                website: "https://www.hcltech.com",
+                stockSymbol: "HCLTECH.NS",
+                shareholders: ["Promoters (60.81%)", "Foreign Institutional Investors (18.23%)", "Domestic Institutional Investors (12.45%)", "Retail Investors (8.51%)"],
+                collaborators: ["Google", "Microsoft", "AWS", "IBM", "Dell", "Cisco", "Oracle"],
+                futureOutlook: "Expanding digital and engineering services, focusing on cloud and IoT solutions. HCLTech is investing in 5G, edge computing, and next-generation technologies.",
+                image: "https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                video: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+                rating: 4.2,
+                keyPeople: [
+                    {
+                        name: "C Vijayakumar",
+                        role: "CEO & Managing Director",
+                        initials: "CV",
+                        domain: "Technology Services & Strategy",
+                        replacingProduct: "Traditional IT services model",
+                        background: "Joined HCL in 1994. Became CEO in 2017. Led HCL's transformation journey.",
+                        education: "College of Engineering, Guindy, University of Madras",
+                        achievements: "Led HCL's acquisition and integration of IBM's software products division"
+                    },
+                    {
+                        name: "Roshni Nadar Malhotra",
+                        role: "Chairperson",
+                        initials: "RN",
+                        domain: "Strategy & Governance",
+                        replacingProduct: "Traditional corporate governance models",
+                        background: "Daughter of Shiv Nadar. Took over as Chairperson in 2020.",
+                        education: "Northwestern University, Kellogg School of Management",
+                        achievements: "Led HCL's ESG initiatives and digital transformation strategy"
+                    },
+                    {
+                        name: "Apparao VV",
+                        role: "Chief Financial Officer",
+                        initials: "AV",
+                        domain: "Finance & Strategy",
+                        replacingProduct: "Traditional financial management systems",
+                        background: "Over 25 years of experience in finance and strategy.",
+                        education: "IIT Delhi, IIM Ahmedabad",
+                        achievements: "Led HCL's financial restructuring and strategic investments"
+                    }
+                ]
+            },
+            {
+                id: 5,
+                name: "Tech Mahindra",
+                tagline: "Connected World. Connected Experiences.",
+                logo: "T",
+                founded: 1986,
+                headquarters: "Pune, Maharashtra",
+                ceo: "C P Gurnani",
+                revenue: "$6+ Billion",
+                employees: "150,000+",
+                size: "Large",
+                category: ["enterprise", "services"],
+                description: "Tech Mahindra is a provider of information technology, networking technology solutions and Business Process Outsourcing (BPO) to the telecommunications industry. The company offers a wide range of services including IT services, BPO, engineering services, and enterprise solutions.",
+                website: "https://www.techmahindra.com",
+                stockSymbol: "TECHM.NS",
+                shareholders: ["Mahindra Group (42.23%)", "Foreign Institutional Investors (28.45%)", "Mutual Funds (15.23%)", "Insurance Companies (14.09%)"],
+                collaborators: ["Cisco", "Microsoft", "IBM", "Oracle", "SAP", "Google", "Amazon"],
+                futureOutlook: "Investing in 5G, blockchain, and AI technologies to drive growth in telecom and enterprise sectors. Tech Mahindra is focusing on digital transformation and next-generation technologies.",
+                image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                video: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+                rating: 4.0,
+                keyPeople: [
+                    {
+                        name: "C P Gurnani",
+                        role: "CEO & Managing Director",
+                        initials: "CP",
+                        domain: "Telecom & IT Services",
+                        replacingProduct: "Legacy telecom systems",
+                        background: "Joined Tech Mahindra in 2011. Previously worked with Hewlett Packard.",
+                        education: "IIT Roorkee, University of Massachusetts",
+                        achievements: "Led Tech Mahindra's transformation from telecom to digital services company"
+                    },
+                    {
+                        name: "Anand Mahindra",
+                        role: "Chairman",
+                        initials: "AM",
+                        domain: "Business Strategy & Vision",
+                        replacingProduct: "Traditional business models",
+                        background: "Chairman of Mahindra Group. Visionary leader with focus on innovation.",
+                        education: "Harvard University, Harvard Business School",
+                        achievements: "Led Mahindra Group's global expansion and diversification"
+                    },
+                    {
+                        name: "Vineet Nayyar",
+                        role: "Vice Chairman",
+                        initials: "VN",
+                        domain: "Governance & Strategy",
+                        replacingProduct: "Traditional corporate governance",
+                        background: "Over 40 years of experience in IT and telecom industry.",
+                        education: "University of Delhi, University of Pennsylvania",
+                        achievements: "Played key role in Tech Mahindra's merger with Satyam Computer Services"
+                    }
+                ]
+            },
+            {
+                id: 6,
+                name: "Zoho",
+                tagline: "Operating System for Business",
+                logo: "Z",
+                founded: 1996,
+                headquarters: "Chennai, Tamil Nadu",
+                ceo: "Sridhar Vembu",
+                revenue: "$1+ Billion",
+                employees: "12,000+",
+                size: "Large",
+                category: ["product", "enterprise"],
+                description: "Zoho Corporation is a multinational technology company that develops web-based business tools and IT software. With over 50 million users worldwide, Zoho offers a comprehensive suite of online productivity tools and SaaS applications. The company is known for its unique business model and focus on product development.",
+                website: "https://www.zoho.com",
+                shareholders: ["Promoters (95%)", "Employee Stock Holders (5%)"],
+                collaborators: ["Google", "Microsoft", "Amazon", "Stripe", "PayPal", "Salesforce", "Adobe"],
+                futureOutlook: "Expanding product suite, entering new markets, and focusing on AI integration. Zoho is investing in next-generation technologies and expanding its global footprint.",
+                image: "https://www.zoho.com/images/zoho-general-image.jpg",
+                video: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+                rating: 4.6,
+                keyPeople: [
+                    {
+                        name: "Sridhar Vembu",
+                        role: "CEO & Founder",
+                        initials: "SV",
+                        domain: "SaaS Products & Strategy",
+                        replacingProduct: "Expensive enterprise software suites",
+                        background: "Founded Zoho in 1996. PhD from Princeton University. Visionary leader in SaaS space.",
+                        education: "IIT Madras, Princeton University",
+                        achievements: "Built Zoho from scratch to compete with global giants without external funding"
+                    },
+                    {
+                        name: "Sridhar Vembu",
+                        role: "Chief Scientist",
+                        initials: "SV",
+                        domain: "Product Development & Innovation",
+                        replacingProduct: "Traditional software development methodologies",
+                        background: "Deep technical expertise in software architecture and algorithms.",
+                        education: "IIT Madras, Princeton University",
+                        achievements: "Pioneered Zoho's unique product development philosophy and culture"
+                    },
+                    {
+                        name: "Hyther Nizam",
+                        role: "President - Middle East & Africa",
+                        initials: "HN",
+                        domain: "International Markets & Strategy",
+                        replacingProduct: "Regional software solutions",
+                        background: "Over 15 years of experience in international markets and business development.",
+                        education: "University of Madras, INSEAD",
+                        achievements: "Expanded Zoho's presence in Middle East and African markets"
+                    },
+                    {
+                        name: "Raju Vegesna",
+                        role: "Chief Evangelist",
+                        initials: "RV",
+                        domain: "Product Strategy & Marketing",
+                        replacingProduct: "Traditional marketing approaches",
+                        background: "Over 20 years of experience in product marketing and strategy.",
+                        education: "Osmania University, University of Texas",
+                        achievements: "Led Zoho's product positioning and market expansion strategies"
+                    }
+                ]
+            }
+        ];
+
+        // Stock data for the top 5 companies
+        const stockCompanies = [
+            {
+                id: 1,
+                name: "TCS",
+                symbol: "TCS.NS",
+                price: 3650.75,
+                change: 1.25,
+                chartData: []
+            },
+            {
+                id: 2,
+                name: "Infosys",
+                symbol: "INFY.NS",
+                price: 1525.40,
+                change: -0.75,
+                chartData: []
+            },
+            {
+                id: 3,
+                name: "Wipro",
+                symbol: "WIPRO.NS",
+                price: 420.30,
+                change: 2.15,
+                chartData: []
+            },
+            {
+                id: 4,
+                name: "HCLTech",
+                symbol: "HCLTECH.NS",
+                price: 1125.60,
+                change: 0.85,
+                chartData: []
+            },
+            {
+                id: 5,
+                name: "Tech Mahindra",
+                symbol: "TECHM.NS",
+                price: 1180.25,
+                change: -1.20,
+                chartData: []
+            }
+        ];
+
+        // Loading tips
+        const loadingTips = [
+            "Did you know? India is the world's largest exporter of IT services.",
+            "Fun fact: Bangalore is known as the Silicon Valley of India.",
+            "India's IT industry contributes over 8% to the country's GDP.",
+            "The first Indian software company was TCS, founded in 1968.",
+            "India has over 5.4 million IT professionals, the largest in the world.",
+            "Indian IT companies serve clients in over 100 countries.",
+            "The Indian IT industry is growing at a rate of 7-9% annually.",
+            "Over 1,600 multinational companies have R&D centers in India."
+        ];
+
+        // DOM elements
+        const loadingScreen = document.getElementById('loadingScreen');
+        const mainContent = document.getElementById('mainContent');
+        const companiesGrid = document.getElementById('companiesGrid');
+        const stockGrid = document.getElementById('stockGrid');
+        const searchInput = document.getElementById('searchInput');
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const stockCharts = {};
+        const videoModal = document.getElementById('videoModal');
+        const videoFrame = document.getElementById('videoFrame');
+        const closeModal = document.getElementById('closeModal');
+        const toast = document.getElementById('toast');
+        const toastMessage = document.getElementById('toastMessage');
+        const particlesContainer = document.getElementById('particles');
+        const loadingParticles = document.getElementById('loadingParticles');
+        const loadingBar = document.getElementById('loadingBar');
+        const loadingPercentage = document.getElementById('loadingPercentage');
+        const loadingSubtext = document.getElementById('loadingSubtext');
+        const loadingTip = document.getElementById('loadingTip');
+        const soundToggle = document.getElementById('soundToggle');
+        const fab = document.getElementById('fab');
+        
+        // Sound state
+        let soundEnabled = false;
+
+        // Create particles
+        function createParticles() {
+            const particleCount = 50;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                
+                // Random position
+                const posX = Math.random() * window.innerWidth;
+                const posY = Math.random() * window.innerHeight;
+                
+                // Random size
+                const size = Math.random() * 5 + 2;
+                
+                // Random opacity
+                const opacity = Math.random() * 0.5 + 0.2;
+                
+                particle.style.left = `${posX}px`;
+                particle.style.top = `${posY}px`;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.opacity = opacity;
+                
+                particlesContainer.appendChild(particle);
+                
+                // Animate particle
+                animateParticle(particle);
+            }
+        }
+
+        // Create loading particles
+        function createLoadingParticles() {
+            const particleCount = 20;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'loading-particle';
+                
+                // Random position
+                const posX = Math.random() * window.innerWidth;
+                const posY = Math.random() * window.innerHeight;
+                
+                // Random size
+                const size = Math.random() * 8 + 4;
+                
+                particle.style.left = `${posX}px`;
+                particle.style.top = `${posY}px`;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                
+                loadingParticles.appendChild(particle);
+                
+                // Animate loading particle
+                animateLoadingParticle(particle);
+            }
+        }
+
+        // Animate particle
+        function animateParticle(particle) {
+            const speed = Math.random() * 2 + 0.5;
+            const directionX = (Math.random() - 0.5) * 2;
+            const directionY = (Math.random() - 0.5) * 2;
+            
+            function moveParticle() {
+                const currentX = parseFloat(particle.style.left);
+                const currentY = parseFloat(particle.style.top);
+                
+                let newX = currentX + directionX * speed;
+                let newY = currentY + directionY * speed;
+                
+                // Boundary check
+                if (newX < 0 || newX > window.innerWidth) {
+                    newX = Math.random() * window.innerWidth;
+                }
+                
+                if (newY < 0 || newY > window.innerHeight) {
+                    newY = Math.random() * window.innerHeight;
+                }
+                
+                particle.style.left = `${newX}px`;
+                particle.style.top = `${newY}px`;
+                
+                requestAnimationFrame(moveParticle);
+            }
+            
+            moveParticle();
+        }
+
+        // Animate loading particle
+        function animateLoadingParticle(particle) {
+            const speed = Math.random() * 1 + 0.3;
+            const directionX = (Math.random() - 0.5) * 2;
+            const directionY = (Math.random() - 0.5) * 2;
+            
+            function moveParticle() {
+                const currentX = parseFloat(particle.style.left);
+                const currentY = parseFloat(particle.style.top);
+                
+                let newX = currentX + directionX * speed;
+                let newY = currentY + directionY * speed;
+                
+                // Boundary check
+                if (newX < 0 || newX > window.innerWidth) {
+                    newX = Math.random() * window.innerWidth;
+                }
+                
+                if (newY < 0 || newY > window.innerHeight) {
+                    newY = Math.random() * window.innerHeight;
+                }
+                
+                particle.style.left = `${newX}px`;
+                particle.style.top = `${newY}px`;
+                
+                requestAnimationFrame(moveParticle);
+            }
+            
+            moveParticle();
+        }
+
+        // Show toast notification
+        function showToast(message, duration = 3000) {
+            toastMessage.textContent = message;
+            toast.classList.add('show');
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, duration);
+        }
+
+        // Sound toggle functionality
+        soundToggle.addEventListener('click', () => {
+            soundEnabled = !soundEnabled;
+            
+            if (soundEnabled) {
+                soundToggle.innerHTML = '<i class="fas fa-volume-up"></i><span>Sound: ON</span>';
+                showToast('Sound enabled');
+            } else {
+                soundToggle.innerHTML = '<i class="fas fa-volume-mute"></i><span>Sound: OFF</span>';
+                showToast('Sound disabled');
+            }
+        });
+
+        // Update loading progress
+        function updateLoadingProgress(percent, step, message) {
+            loadingBar.style.width = `${percent}%`;
+            loadingPercentage.textContent = `${percent}%`;
+            loadingSubtext.textContent = message;
+            
+            // Update step indicators
+            if (step) {
+                document.getElementById(`step${step}`).classList.add('active');
+                
+                // Mark previous steps as completed
+                for (let i = 1; i < step; i++) {
+                    document.getElementById(`step${i}`).classList.remove('active');
+                    document.getElementById(`step${i}`).classList.add('completed');
+                }
+            }
+            
+            // Play sound if enabled
+            if (soundEnabled && percent % 25 === 0) {
+                // In a real implementation, you would play an actual sound here
+                console.log('Playing loading sound');
+            }
+        }
+
+        // Cycle through loading tips
+        function cycleLoadingTips() {
+            let currentTipIndex = 0;
+            
+            setInterval(() => {
+                currentTipIndex = (currentTipIndex + 1) % loadingTips.length;
+                loadingTip.innerHTML = `<i class="fas fa-lightbulb"></i><span>${loadingTips[currentTipIndex]}</span>`;
+            }, 3000);
+        }
+
+        // Animate counters
+        function animateCounters() {
+            const counters = document.querySelectorAll('.stat-number');
+            
+            counters.forEach(counter => {
+                const target = +counter.getAttribute('data-target');
+                const increment = target / 200;
+                
+                const updateCounter = () => {
+                    const current = +counter.innerText.replace(/,/g, '');
+                    
+                    if (current < target) {
+                        counter.innerText = Math.ceil(current + increment).toLocaleString();
+                        setTimeout(updateCounter, 10);
+                    } else {
+                        counter.innerText = target.toLocaleString();
+                    }
+                };
+                
+                updateCounter();
+            });
+        }
+
+        // Floating Action Button functionality
+        fab.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+            
+            showToast('Scrolled to top!');
+        });
+
+        // Show/hide FAB based on scroll position
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                fab.style.display = 'flex';
+            } else {
+                fab.style.display = 'none';
+            }
+        });
+
+        // Initialize the page with enhanced loading
+        document.addEventListener('DOMContentLoaded', function() {
+            // Create particles
+            createParticles();
+            createLoadingParticles();
+            
+            // Start cycling loading tips
+            cycleLoadingTips();
+            
+            // Simulate loading steps
+            let loadingProgress = 0;
+            const loadingSteps = [
+                { percent: 25, step: 1, message: "Initializing components..." },
+                { percent: 50, step: 2, message: "Loading company data..." },
+                { percent: 75, step: 3, message: "Preparing charts and analytics..." },
+                { percent: 100, step: 4, message: "Finalizing experience..." }
+            ];
+            
+            let currentStep = 0;
+            
+            const loadingInterval = setInterval(() => {
+                loadingProgress += 2;
+                
+                // Check if we need to update the step
+                if (currentStep < loadingSteps.length && loadingProgress >= loadingSteps[currentStep].percent) {
+                    updateLoadingProgress(
+                        loadingSteps[currentStep].percent,
+                        loadingSteps[currentStep].step,
+                        loadingSteps[currentStep].message
+                    );
+                    currentStep++;
+                } else {
+                    updateLoadingProgress(loadingProgress, null, loadingSubtext.textContent);
+                }
+                
+                // Check if loading is complete
+                if (loadingProgress >= 100) {
+                    clearInterval(loadingInterval);
+                    
+                    // Mark all steps as completed
+                    for (let i = 1; i <= 4; i++) {
+                        document.getElementById(`step${i}`).classList.remove('active');
+                        document.getElementById(`step${i}`).classList.add('completed');
+                    }
+                    
+                    // Wait a moment before transitioning
+                    setTimeout(() => {
+                        loadingScreen.style.opacity = '0';
+                        setTimeout(() => {
+                            loadingScreen.style.display = 'none';
+                            mainContent.classList.add('visible');
+                            renderCompanies(companies);
+                            renderStockCards(stockCompanies);
+                            initializeStockCharts();
+                            initializeIndustryGraphs();
+                            animateCounters();
+                            
+                            // Show welcome toast
+                            showToast('Welcome to Indigenius Software Companies!');
+                            
+                            // Update stock data every 5 seconds
+                            setInterval(updateStockData, 5000);
+                        }, 500);
+                    }, 1000);
+                }
+            }, 50);
+        });
+
+        // Render companies with enhanced information
+        function renderCompanies(companiesToRender) {
+            companiesGrid.innerHTML = '';
+            
+            companiesToRender.forEach(company => {
+                const companyCard = document.createElement('div');
+                companyCard.className = `company-card ${company.name === 'Zoho' ? 'zoho-card' : ''}`;
+                companyCard.innerHTML = `
+                    <div class="company-header">
+                        <div class="company-logo">${company.logo}</div>
+                        <h3 class="company-name">${company.name}</h3>
+                        <p class="company-tagline">${company.tagline}</p>
+                    </div>
+                    <div class="company-body">
+                        <div class="company-info">
+                            <div class="info-item">
+                                <i class="fas fa-calendar info-icon"></i>
+                                <span>Founded: ${company.founded}</span>
+                            </div>
+                            <div class="info-item">
+                                <i class="fas fa-map-marker-alt info-icon"></i>
+                                <span>${company.headquarters}</span>
+                            </div>
+                            <div class="info-item">
+                                <i class="fas fa-user-tie info-icon"></i>
+                                <span>CEO: ${company.ceo}</span>
+                            </div>
+                        </div>
+                        
+                        <div class="company-media">
+                            <img src="${company.image}" alt="${company.name}" class="company-image">
+                            <div class="video-overlay" onclick="openVideoModal('${company.video}')">
+                                <div class="play-button">
+                                    <i class="fas fa-play"></i>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="company-rating">
+                            <div class="rating-stars">
+                                ${generateRatingStars(company.rating)}
+                            </div>
+                            <span class="rating-value">${company.rating}/5</span>
+                        </div>
+                        
+                        <p class="company-description">${company.description.substring(0, 120)}...</p>
+                        
+                        <!-- Key People Section -->
+                        <div class="key-people-section">
+                            <div class="key-people-title">
+                                <i class="fas fa-users"></i> Key People
+                            </div>
+                            <div class="key-people-grid">
+                                ${company.keyPeople.map(person => `
+                                    <div class="key-person">
+                                        <div class="key-person-avatar">${person.initials}</div>
+                                        <div class="key-person-name">${person.name}</div>
+                                        <div class="key-person-role">${person.role}</div>
+                                        <div class="key-person-domain">Domain: ${person.domain}</div>
+                                        <div class="key-person-replacing">Replacing: ${person.replacingProduct}</div>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                        
+                        <div class="company-additional">
+                            <div class="additional-title">Shareholders</div>
+                            <ul class="additional-list">
+                                ${company.shareholders && company.shareholders.length > 0 ? 
+                                    company.shareholders.map(shareholder => `<li>${shareholder}</li>`).join('') : 
+                                    '<li>Information not available</li>'
+                                }
+                            </ul>
+                        </div>
+                        
+                        <div class="company-additional">
+                            <div class="additional-title">Collaborators</div>
+                            <ul class="additional-list">
+                                ${company.collaborators && company.collaborators.length > 0 ? 
+                                    company.collaborators.map(collaborator => `<li>${collaborator}</li>`).join('') : 
+                                    '<li>Information not available</li>'
+                                }
+                            </ul>
+                        </div>
+                        
+                        <div class="company-additional">
+                            <div class="additional-title">Future Outlook</div>
+                            <p>${company.futureOutlook || 'Information not available'}</p>
+                        </div>
+                        
+                        <div class="company-footer">
+                            <span class="company-size">${company.size}</span>
+                            <a href="${company.website}" target="_blank" class="visit-btn">Visit Website</a>
+                        </div>
+                    </div>
+                `;
+                companiesGrid.appendChild(companyCard);
+            });
+        }
+
+        // Generate rating stars
+        function generateRatingStars(rating) {
+            let stars = '';
+            const fullStars = Math.floor(rating);
+            const hasHalfStar = rating % 1 >= 0.5;
+            
+            for (let i = 0; i < fullStars; i++) {
+                stars += '<i class="fas fa-star"></i>';
+            }
+            
+            if (hasHalfStar) {
+                stars += '<i class="fas fa-star-half-alt"></i>';
+            }
+            
+            const emptyStars = 5 - Math.ceil(rating);
+            for (let i = 0; i < emptyStars; i++) {
+                stars += '<i class="far fa-star"></i>';
+            }
+            
+            return stars;
+        }
+
+        // Open video modal
+        function openVideoModal(videoUrl) {
+            videoFrame.src = videoUrl;
+            videoModal.style.display = 'flex';
+            showToast('Video player opened');
+        }
+
+        // Close video modal
+        closeModal.addEventListener('click', function() {
+            videoModal.style.display = 'none';
+            videoFrame.src = '';
+        });
+
+        // Close modal when clicking outside
+        window.addEventListener('click', function(event) {
+            if (event.target === videoModal) {
+                videoModal.style.display = 'none';
+                videoFrame.src = '';
+            }
+        });
+
+        // Render stock cards
+        function renderStockCards(stockCompanies) {
+            stockGrid.innerHTML = '';
+            
+            stockCompanies.forEach(company => {
+                const stockCard = document.createElement('div');
+                stockCard.className = 'stock-card';
+                stockCard.id = `stock-card-${company.id}`;
+                
+                const changeClass = company.change >= 0 ? 'stock-positive' : 'stock-negative';
+                const changeIcon = company.change >= 0 ? 'fa-arrow-up' : 'fa-arrow-down';
+                
+                stockCard.innerHTML = `
+                    <div class="stock-card-header">
+                        <div class="stock-company-name">${company.name}</div>
+                        <div class="stock-price ${changeClass}">
+                            ₹${company.price.toFixed(2)} 
+                            <i class="fas ${changeIcon}"></i> 
+                            ${Math.abs(company.change)}%
+                        </div>
+                    </div>
+                    <div class="stock-chart-container">
+                        <canvas id="stock-chart-${company.id}"></canvas>
+                    </div>
+                    <div class="stock-info">
+                        <span>NSE: ${company.symbol}</span>
+                        <span id="last-update-${company.id}">Just now</span>
+                    </div>
+                `;
+                
+                stockGrid.appendChild(stockCard);
+            });
+        }
+
+        // Initialize stock charts
+        function initializeStockCharts() {
+            stockCompanies.forEach(company => {
+                const ctx = document.getElementById(`stock-chart-${company.id}`).getContext('2d');
+                
+                // Generate initial data
+                const data = generateStockData();
+                company.chartData = data;
+                
+                stockCharts[company.id] = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: data.labels,
+                        datasets: [{
+                            label: company.name,
+                            data: data.values,
+                            borderColor: company.change >= 0 ? '#4ade80' : '#f87171',
+                            backgroundColor: company.change >= 0 ? 'rgba(74, 222, 128, 0.1)' : 'rgba(248, 113, 113, 0.1)',
+                            borderWidth: 2,
+                            pointRadius: 0,
+                            tension: 0.4,
+                            fill: true
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                display: false
+                            },
+                            tooltip: {
+                                mode: 'index',
+                                intersect: false
+                            }
+                        },
+                        scales: {
+                            x: {
+                                display: false
+                            },
+                            y: {
+                                display: false
+                            }
+                        }
+                    }
+                });
+            });
+        }
+
+        // Initialize industry graphs
+        function initializeIndustryGraphs() {
+            // Revenue Growth Chart
+            const revenueCtx = document.getElementById('revenueGrowthChart').getContext('2d');
+            new Chart(revenueCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['2018', '2019', '2020', '2021', '2022', '2023'],
+                    datasets: [{
+                        label: 'Revenue ($B)',
+                        data: [150, 167, 180, 195, 210, 227],
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.7)',
+                            'rgba(54, 162, 235, 0.7)',
+                            'rgba(255, 206, 86, 0.7)',
+                            'rgba(75, 192, 192, 0.7)',
+                            'rgba(153, 102, 255, 0.7)',
+                            'rgba(255, 159, 64, 0.7)'
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(153, 102, 255, 1)',
+                            'rgba(255, 159, 64, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            grid: {
+                                color: 'rgba(255, 255, 255, 0.1)'
+                            },
+                            ticks: {
+                                color: 'rgba(255, 255, 255, 0.7)'
+                            }
+                        },
+                        x: {
+                            grid: {
+                                color: 'rgba(255, 255, 255, 0.1)'
+                            },
+                            ticks: {
+                                color: 'rgba(255, 255, 255, 0.7)'
+                            }
+                        }
+                    }
+                }
+            });
+
+            // Market Share Chart
+            const marketShareCtx = document.getElementById('marketShareChart').getContext('2d');
+            new Chart(marketShareCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['TCS', 'Infosys', 'Wipro', 'HCLTech', 'Tech Mahindra', 'Others'],
+                    datasets: [{
+                        data: [35, 20, 12, 10, 8, 15],
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.7)',
+                            'rgba(54, 162, 235, 0.7)',
+                            'rgba(255, 206, 86, 0.7)',
+                            'rgba(75, 192, 192, 0.7)',
+                            'rgba(153, 102, 255, 0.7)',
+                            'rgba(255, 159, 64, 0.7)'
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(153, 102, 255, 1)',
+                            'rgba(255, 159, 64, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'right',
+                            labels: {
+                                color: 'rgba(255, 255, 255, 0.7)'
+                            }
+                        }
+                    }
+                }
+            });
+
+            // Talent Distribution Chart
+            const talentCtx = document.getElementById('talentDistributionChart').getContext('2d');
+            new Chart(talentCtx, {
+                type: 'polarArea',
+                data: {
+                    labels: ['Cloud', 'AI/ML', 'Cybersecurity', 'Data Science', 'DevOps', 'Blockchain'],
+                    datasets: [{
+                        data: [30, 25, 20, 15, 8, 2],
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.7)',
+                            'rgba(54, 162, 235, 0.7)',
+                            'rgba(255, 206, 86, 0.7)',
+                            'rgba(75, 192, 192, 0.7)',
+                            'rgba(153, 102, 255, 0.7)',
+                            'rgba(255, 159, 64, 0.7)'
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(153, 102, 255, 1)',
+                            'rgba(255, 159, 64, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'right',
+                            labels: {
+                                color: 'rgba(255, 255, 255, 0.7)'
+                            }
+                        }
+                    },
+                    scales: {
+                        r: {
+                            grid: {
+                                color: 'rgba(255, 255, 255, 0.1)'
+                            },
+                            ticks: {
+                                color: 'rgba(255, 255, 255, 0.7)'
+                            }
+                        }
+                    }
+                }
+            });
+
+            // Investment Trends Chart
+            const investmentCtx = document.getElementById('investmentTrendsChart').getContext('2d');
+            new Chart(investmentCtx, {
+                type: 'line',
+                data: {
+                    labels: ['2018', '2019', '2020', '2021', '2022', '2023'],
+                    datasets: [{
+                        label: 'VC Funding ($B)',
+                        data: [8, 10, 11, 15, 18, 20],
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                        borderWidth: 2,
+                        fill: true,
+                        tension: 0.4
+                    }, {
+                        label: 'M&A Deals ($B)',
+                        data: [5, 7, 9, 12, 14, 16],
+                        borderColor: 'rgba(255, 99, 132, 1)',
+                        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                        borderWidth: 2,
+                        fill: true,
+                        tension: 0.4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            labels: {
+                                color: 'rgba(255, 255, 255, 0.7)'
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            grid: {
+                                color: 'rgba(255, 255, 255, 0.1)'
+                            },
+                            ticks: {
+                                color: 'rgba(255, 255, 255, 0.7)'
+                            }
+                        },
+                        x: {
+                            grid: {
+                                color: 'rgba(255, 255, 255, 0.1)'
+                            },
+                            ticks: {
+                                color: 'rgba(255, 255, 255, 0.7)'
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Generate random stock data
+        function generateStockData() {
+            const labels = [];
+            const values = [];
+            const now = new Date();
+            
+            // Generate 30 data points (for the last 30 days)
+            for (let i = 29; i >= 0; i--) {
+                const date = new Date(now);
+                date.setDate(date.getDate() - i);
+                labels.push(date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }));
+                
+                // Generate random value between 90% and 110% of base value
+                const baseValue = 1000;
+                const randomValue = baseValue * (0.9 + Math.random() * 0.2);
+                values.push(randomValue);
+            }
+            
+            return { labels, values };
+        }
+
+        // Update stock data
+        function updateStockData() {
+            stockCompanies.forEach(company => {
+                // Simulate price change
+                const changePercent = (Math.random() - 0.5) * 2; // Random change between -1% and 1%
+                company.price = company.price * (1 + changePercent / 100);
+                company.change = changePercent;
+                
+                // Update chart data
+                const newDate = new Date();
+                const newLabel = newDate.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+                const newValue = company.price;
+                
+                // Add new data point and remove the oldest
+                company.chartData.labels.shift();
+                company.chartData.labels.push(newLabel);
+                company.chartData.values.shift();
+                company.chartData.values.push(newValue);
+                
+                // Update chart
+                const chart = stockCharts[company.id];
+                chart.data.labels = company.chartData.labels;
+                chart.data.datasets[0].data = company.chartData.values;
+                chart.data.datasets[0].borderColor = company.change >= 0 ? '#4ade80' : '#f87171';
+                chart.data.datasets[0].backgroundColor = company.change >= 0 ? 'rgba(74, 222, 128, 0.1)' : 'rgba(248, 113, 113, 0.1)';
+                chart.update();
+                
+                // Update card
+                const card = document.getElementById(`stock-card-${company.id}`);
+                const priceElement = card.querySelector('.stock-price');
+                const changeClass = company.change >= 0 ? 'stock-positive' : 'stock-negative';
+                const changeIcon = company.change >= 0 ? 'fa-arrow-up' : 'fa-arrow-down';
+                
+                priceElement.className = `stock-price ${changeClass}`;
+                priceElement.innerHTML = `₹${company.price.toFixed(2)} <i class="fas ${changeIcon}"></i> ${Math.abs(company.change).toFixed(2)}%`;
+                
+                // Update last update time
+                document.getElementById(`last-update-${company.id}`).textContent = 'Just now';
+            });
+        }
+
+        // Filter functionality
+        filterButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                // Update active state
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                this.classList.add('active');
+
+                const filter = this.getAttribute('data-filter');
+                let filteredCompanies;
+
+                if (filter === 'all') {
+                    filteredCompanies = companies;
+                } else {
+                    filteredCompanies = companies.filter(company => 
+                        company.category.includes(filter)
+                    );
+                }
+
+                renderCompanies(filteredCompanies);
+                showToast(`Showing ${filter} companies`);
+            });
+        });
+
+        // Search functionality
+        searchInput.addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase();
+            const filteredCompanies = companies.filter(company => 
+                company.name.toLowerCase().includes(searchTerm) ||
+                company.description.toLowerCase().includes(searchTerm) ||
+                company.headquarters.toLowerCase().includes(searchTerm)
+            );
+            renderCompanies(filteredCompanies);
+            
+            if (searchTerm && filteredCompanies.length === 0) {
+                showToast('No companies found matching your search');
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
